@@ -14,8 +14,6 @@ namespace ChescaSpellingApp
 {
     public partial class frmMain : Form
     {
-        private static System.Timers.Timer aTimer;
-
         public frmMain()
         {
             InitializeComponent();
@@ -61,12 +59,16 @@ namespace ChescaSpellingApp
                 synth.Speak("I will give you 20 seconds to spell the word..." + words[i] + ". Again, the word is " + words[i] + ". Go.");
                 txtWord.Enabled = true;
                 await Task.Delay(20000);
+                ShowWord(words[i]);
+                await Task.Delay(500);
                 synth.Speak("Let's see if you got the spelling correct. The correct spelling for the word " + words[i] + " is " + string.Join(", ", words[i].ToCharArray()));
-                if (words[i] == txtWord.Text.Trim())
+                lblCorrectWord.Hide();
+                if (words[i].ToLower() == txtWord.Text.Trim().ToLower())
                     score++;
+                txtWord.Text = "";
+                await Task.Delay(500);
                 if (i != 4)
                     synth.Speak("It's time for the next word.");
-                txtWord.Text = "";
             }
             if (score > 2)
                 synth.Speak("Good job today, Chesca. You got " + Convert.ToString(score) + " out of 5. See you again tomorrow.");
@@ -95,6 +97,12 @@ namespace ChescaSpellingApp
         private void txtWord_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
+
+        private void ShowWord(string word)
+        {
+            lblCorrectWord.Show();
+            lblCorrectWord.Text = word;
         }
     }
 }
