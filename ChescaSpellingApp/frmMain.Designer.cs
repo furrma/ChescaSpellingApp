@@ -33,6 +33,7 @@ namespace ChescaSpellingApp
             this.lblTitle = new System.Windows.Forms.Label();
             this.txtWord = new System.Windows.Forms.TextBox();
             this.lblWord = new System.Windows.Forms.Label();
+            this.lblCorrectWord = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnStart
@@ -79,6 +80,18 @@ namespace ChescaSpellingApp
             this.lblWord.Text = "Word:";
             this.lblWord.Visible = false;
             // 
+            // lblCorrectWord
+            // 
+            this.lblCorrectWord.AutoSize = true;
+            this.lblCorrectWord.Font = new System.Drawing.Font("Century Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCorrectWord.ForeColor = System.Drawing.Color.Blue;
+            this.lblCorrectWord.Location = new System.Drawing.Point(318, 84);
+            this.lblCorrectWord.Name = "lblCorrectWord";
+            this.lblCorrectWord.Size = new System.Drawing.Size(434, 78);
+            this.lblCorrectWord.TabIndex = 4;
+            this.lblCorrectWord.Text = "CorrectWord";
+            this.lblCorrectWord.Visible = false;
+            // 
             // frmMain
             // 
             this.AcceptButton = this.btnStart;
@@ -87,6 +100,7 @@ namespace ChescaSpellingApp
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.ClientSize = new System.Drawing.Size(788, 418);
             this.ControlBox = false;
+            this.Controls.Add(this.lblCorrectWord);
             this.Controls.Add(this.txtWord);
             this.Controls.Add(this.lblWord);
             this.Controls.Add(this.lblTitle);
@@ -108,6 +122,7 @@ namespace ChescaSpellingApp
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.TextBox txtWord;
         private System.Windows.Forms.Label lblWord;
+        private System.Windows.Forms.Label lblCorrectWord;
     }
 }
 
